@@ -1,0 +1,18 @@
+<section class="m-10 mx-auto p-16 sm:p-24 lg:p-48 bg-gray-200">
+  <div class="neumor relative block md:flex items-center" style="min-height: 19rem;">
+    <div class="relative w-full md:w-2/5 h-full overflow-hidden"
+      style="min-height: 19rem;">
+      <div class="absolute inset-0 w-full h-full bg-indigo-900 opacity-75"></div>
+    </div>
+    <div class="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
+      <div class="p-12 md:pr-24 md:pl-16 md:py-12">
+        <p class="text-gray-600">Welcome to <span class="text-indigo-500 text-4xl">Rumbl.</p><br />
+        <p class="text-gray-500 font-sans font-hairline">Rumbl is a community based on sharing. Because sharing is
+          caring. We care our community gets the better experience sharing what they care. 🙌</p><br />
+        <%= link "Join in", to: Routes.user_path(@conn, :new), class: "bg-indigo-500 hover:bg-indigo-700 text-gray-300 hover:text-white font-bold py-6 px-8 rounded-full" %>
+      </div>
+      <svg class="hidden md:block absolute inset-y-0 h-full w-24 fill-current text-gray-100 -ml-12"
+        viewBox="0 0 100 100" preserveAspectRatio="none">
+        <polygon points="50,0 100,0 50,100 0,100" />
+      </svg>
+</section>

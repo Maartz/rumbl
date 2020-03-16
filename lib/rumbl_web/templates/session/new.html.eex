@@ -1,0 +1,54 @@
+<div class="container mx-auto">
+    <div class="flex justify-center px-6 my-12">
+        <!-- Row -->
+        <div class="w-full xl:w-3/4 lg:w-11/12 flex shadow-2xl">
+            <!-- Col -->
+            <div class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+                style="background-image: url('https://source.unsplash.com/random/800x600')">
+
+            </div>
+            <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+                <h3 class="pt-4 text-6xl text-center">Login</h3>
+                <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session, class: "px-8 pt-6 pb-8 mb-4 bg-white rounded"], fn f -> %>
+
+                <div class="mb-6">
+                    <label class="block mb-2 text-2xl font-bold text-gray-700" for="username">Username: </label>
+                    <%= text_input f, :username, [class: "w-full px-3 py-2 text-2xl leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"] %>
+                </div>
+                <p class="text-lg italic text-red-500">
+                    <%= error_tag f, :username%>
+                </p>
+
+
+                <div class="mb-6">
+                    <label class="block mb-2 text-2xl font-bold text-gray-700" for="username">Password: </label>
+                    <%= password_input f, :password, [class: "w-full px-3 py-2 text-2xl leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"] %>
+                </div>
+                <p class="text-lg italic text-red-500">
+                    <%= error_tag f, :password%>
+                </p>
+
+                <div class="mb-6 text-center">
+                    <button type="submit"
+                        class="w-full px-4 py-2 font-bold text-white bg-teal-400 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline border-none">
+                        <span class="inline">
+                            <svg class="inline fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                            </svg>
+                        </span>
+                        Login
+                    </button>
+
+                </div>
+                <% end %>
+
+                <hr class="mb-6 border-t" />
+                <div class="text-center">
+                    <%= link "Go back", to: Routes.page_path(@conn, :index), class: "inline-block text-2xl text-blue-500 align-baseline hover:text-blue-800" %>
+                </div>
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= assigns[:page_title] || "Rumbl · Phoenix Framework" %></title>
+  <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
+  <%= csrf_meta_tag() %>
+</head>
+
+<body class="bg-gray-200 relative h-screen overflow-x-hidden0">
+  <header class="bg-indigo-700">
+    <section class="container">
+    <%= link "Rumbl", to: Routes.page_path(@conn, :index), class: "text-gray-300 font-black py-5 font-title tracking-wider text-5xl hover:text-white" %>
+
+      <nav role="navigation" class="flex flex-wrap items-center content-between content-around">
+        <%= if @current_user do%>
+        <p class="text-gray-300 py-6 px-5 font-semibold"><%= @current_user.username %></p>
+        <%= link "Log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete", class: "bg-teal-400 hover:bg-teal-700 text-gray-300 hover:text-white font-bold py-2 px-5 rounded-full" %>
+
+        <% else %>
+        <%= link "Register", to: Routes.user_path(@conn, :new), class: "bg-teal-400 hover:bg-teal-700 text-gray-300 hover:text-white font-bold py-2 px-5 rounded-full mr-6"%>
+        <%= link "Log In", to: Routes.session_path(@conn, :new), class: "bg-teal-400 hover:bg-teal-700 text-gray-300 hover:text-white font-bold py-2 px-5 rounded-full"%>
+        <% end %>
+      </nav>
+    </section>
+  </header>
+
+  <%= for {key, value} <- get_flash(@conn) do %>
+  <%= if key == "info" do %>
+  <div class="bg-green-400 mb-4">
+    <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans">
+      <%= value %>
+    </div>
+  </div>
+  <% end%>
+  <%= if key == "error" do %>
+  <div class="bg-red-400 mb-4">
+    <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans">
+      <%= value %>
+    </div>
+  </div>
+  <% end %>
+  <%= if key == "message" do %>
+  <div class="bg-blue-400 mb-4">
+    <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans">
+      <%= value %>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+
+  <main role="main" class="container mt-6">
+    <%= render @view_module, @view_template, assigns %>
+  </main>
+  <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</body>
+
+</html>
