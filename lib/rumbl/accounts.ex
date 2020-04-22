@@ -40,15 +40,20 @@ defmodule Rumbl.Accounts do
   end
 
   def authenticate_by_username_and_pass(username, given_pass) do
+    # Get the user from the Repo
     user = get_user_by(username: username)
 
     cond do
+      # If the user exists and the given password matches the provided password
       user && Pbkdf2.verify_pass(given_pass, user.password_hash) ->
+        # So we return an OK tuple with the user
         {:ok, user}
 
+      # If the user exist but pass not matches, return an error tuple
       user ->
         {:error, :unauthorized}
 
+      # Else we simulate an action to avoid timed attack
       true ->
         Pbkdf2.no_user_verify()
         {:error, :not_found}

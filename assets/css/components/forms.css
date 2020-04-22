@@ -1,29 +1,3 @@
-
-/* This file is for your main application css. */
-
-@import "./phoenix.css";
-@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
-
-@tailwind base;
-
-@tailwind components;
-
-.btn {
-    @apply font-semibold text-lg py-3 px-6 rounded cursor-pointer no-underline;
-}
-
-.btn-small {
-    @apply font-bold py-2 px-4 rounded text-sm;
-}
-
-.btn-purple {
-    @apply bg-purple-600 text-white;
-}
-
-.btn-purple:hover {
-    @apply bg-purple-700;
-}
-
 .input {
     @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
 }
@@ -44,11 +18,3 @@
 .select-focus {
     @apply outline-none bg-white border-gray-500;
 }
-
-@tailwind utilities;
-
-
-
-
-
-

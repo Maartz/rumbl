@@ -1,5 +1,10 @@
-<h1>New Video</h1>
+<div class="bg-white shadow rounded-sm">
+    <div class="lg:p-10 pt-10 pb-10 px-4">
 
-<%= render "form.html", Map.put(assigns, :action, Routes.video_path(@conn, :create)) %>
+        <h1 class="text-6xl font-normal mb-6">New Video</h1>
 
-<span><%= link "Back", to: Routes.video_path(@conn, :index) %></span>
+        <%= render "form.html", Map.put(assigns, :action, Routes.video_path(@conn, :create)) %>
+        <span><%= link "Back", to: Routes.video_path(@conn, :index) %></span>
+
+        </div>
+</div>

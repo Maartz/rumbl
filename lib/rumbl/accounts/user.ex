@@ -6,7 +6,7 @@ defmodule Rumbl.Accounts.User do
   schema "users" do
     field :name, :string
     field :username, :string
-    field :password, :string, virtual: true
+    field :password, :string, virtual: true # Not saved in database
     field :password_hash, :string
 
     timestamps()
@@ -30,9 +30,11 @@ defmodule Rumbl.Accounts.User do
 
   defp put_pass_hash(changeset) do
     case changeset do
+      # If the Changeset tuple contains the valid? key at true, we modify the changeset passed to get the password in an hashed form
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
         put_change(changeset, :password_hash, Pbkdf2.hash_pwd_salt(pass))
 
+      # Else we return the changeset with no modification
       _ ->
         changeset
     end
