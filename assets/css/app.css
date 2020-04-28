@@ -2,6 +2,7 @@
 /* This file is for your main application css. */
 
 @import "./phoenix.css";
+@import "./video.css";
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
 @tailwind base;

@@ -18,6 +18,7 @@
       <nav role="navigation" class="flex flex-wrap items-center content-between content-around">
         <%= if @current_user do%>
         <p class="text-gray-300 py-6 px-5 font-semibold"><%= @current_user.username %></p>
+        <%= link "My Videos", to: Routes.video_path(@conn, :index), class: "bg-teal-400 hover:bg-teal-700 text-gray-300 hover:text-white font-bold py-2 px-5 rounded-full"%>
         <%= link "Log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete", class: "bg-teal-400 hover:bg-teal-700 text-gray-300 hover:text-white font-bold py-2 px-5 rounded-full" %>
 
         <% else %>
