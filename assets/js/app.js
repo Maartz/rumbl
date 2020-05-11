@@ -3,6 +3,10 @@
 // its own CSS file.
 import css from "../css/app.css"
 import Player from "./player"
+import socket from "./socket"
+import Video from "./video"
+
+let video = document.getElementById("video")
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
@@ -22,3 +26,5 @@ if(video) {
     console.log("player ready!")
   })
 }
+
+Video.init(socket, document.getElementById("video"))
